@@ -1,0 +1,38 @@
+Here's an example of a basic folder structure for a PHP MVC application with image upload and markdown support:
+
+bash
+Copy code
+/app
+    /controllers
+        HomeController.php
+        ImageController.php
+    /models
+        ImageModel.php
+        MarkdownModel.php
+    /views
+        home
+            index.php
+        image
+            upload.php
+/public
+    /uploads
+        /images
+    /css
+    /js
+/system
+    Controller.php
+    Model.php
+    View.php
+index.php
+The /app directory contains the main application logic.
+The /controllers directory contains the controllers for the different parts of the application. In this example, there are two controllers: HomeController and ImageController.
+The /models directory contains the models for the different parts of the application. In this example, there are two models: ImageModel and MarkdownModel.
+The /views directory contains the views for the different parts of the application. In this example, there are two views: home/index.php and image/upload.php.
+The /public directory contains public assets, such as images, CSS, and JavaScript files. In this example, there is a subdirectory /uploads/images for storing uploaded images.
+The /system directory contains the base classes for the MVC pattern, including Controller, Model, and View.
+The index.php file serves as the entry point for the application and sets up the basic environment and includes the necessary files.
+
+
+
+Regenerate response
+

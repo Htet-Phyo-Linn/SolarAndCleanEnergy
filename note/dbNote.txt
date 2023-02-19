@@ -1,0 +1,38 @@
+create table tasks(
+id int AUTO_INCREMENT,
+description varchar(255),
+complete boolean,
+primary key(id)
+);
+
+
+create database SolarAndCleanEnergy;
+use SolarAndCleanEnergy;
+
+create table users(
+    uid varchar(10) not null,
+	userName varchar(255),
+	password varchar(255),
+	email varchar(255),
+	phNo varchar(255),
+	userRole int not null,
+	primary key(uid)
+);
+desc users;
+
+create table images(
+	iid int not null,
+	fileName varchar(255),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	primary key(iid)
+);
+desc images;
+
+
+
+insert into users values (1, "admin", "admin", "admin@gmail.com", "09795994587", 1);
+
+insert into tasks (description,complete) values ("finish homework", false);
+insert into tasks  (description,complete) values ("clean", true);
+
+select * from tasks;
