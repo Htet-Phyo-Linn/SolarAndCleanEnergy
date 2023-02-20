@@ -39,36 +39,42 @@
             redirect("/");
         }
 
-        public function login() {
+        public function admin(){
+            $users = App::get("database")->selectAll("users");
+            view('Admin', [
+                "users"=>$users
+            ]);
+            
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                sessionDestory();
+            }
+        }
+
+        public function signin() {
             session_start();
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-                // $userName = checkInput(request("userName"));
-                // $password = checkInput(request("password"));
 
                 $userInfo = App::get("database")->loginCheck([
                     'userName'=> $userName = checkInput(request("userName")),
                     'password'=> checkInput(request("password"))
                 ], "users");
 
-                if($userInfo["rowCount"] == 0) {
+                if($userInfo["rowCount"] == 1) {
                     $_SESSION["user_id"] = $userInfo['uInfo'][0]['uid'];
-
                     if($userInfo['uInfo'][0]['userRole'] == 1) {
-                        redirect("about");
+                        redirect("admin");
+                        exit();
                     } else {
-                        redirect("/");
+                        redirect("home");
+                        exit();
                     }
-                    exit();
-
                 } else {
                     App::bind("status", "failed");
-                    view("Login");
+                    view("Signin");
                 }
-
             } else {
-                view("Login");
+                view("Signin");
             }
         }
        

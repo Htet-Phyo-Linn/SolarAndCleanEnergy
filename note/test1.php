@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // TODO: Validate login credentials
-    $is_valid_login = false; // placeholder for validation logic
+    $is_valid_login = true; // placeholder for validation logic
 
     if ($is_valid_login) {
         // Successful login, store user ID in session and redirect to dashboard

@@ -16,9 +16,14 @@
 
     $router->get('', [PagesController::class, "index"]);
     $router->get('about', [PagesController::class, "about"]);
-    $router->get('login', [PagesController::class, "login"]);
+    $router->get('signin', [PagesController::class, "signin"]);
+    $router->get('signup', [PagesController::class, "signup"]);
     $router->get('home', [PagesController::class, "home"]);
-    $router->post('login', [PagesController::class, "login"]);
+    $router->get('admin', [PagesController::class, "admin"]);
+    $router->post('admin', [PagesController::class, "admin"]);
+    $router->post('signin', [PagesController::class, "signin"]);
+    $router->post('signup', [PagesController::class, "signup"]);
+    
 ?>
 
 

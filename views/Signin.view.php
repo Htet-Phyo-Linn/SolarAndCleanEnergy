@@ -3,15 +3,18 @@
 
     <?php
         use core\App;
+
+        if (isset($_SESSION["user_id"]) == 1) {
+            redirect("admin");
+        } else {
+            redirect("home");
+        }
+
         if (App::get("status")!=null) { 
     ?>
         <p> name or password wrong. </p>
     <?php
-            App::bind("status", "success");
-            
-            if(App::get("status") == "success") {
-                redirect("home");
-            }
+
         }
     ?>
 

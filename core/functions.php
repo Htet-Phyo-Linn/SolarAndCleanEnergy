@@ -34,8 +34,17 @@
 
     function sessionCheck() {
         if (!isset($_SESSION["user_id"])) {
-            redirect("login");
+            redirect("signin");
             exit();
         }
+    }
+
+    function sessionDestory() {
+        if (isset($_POST["logout"])){
+            session_destroy();
+            redirect("signin");
+            exit();
+        }
+        
     }
 ?>
