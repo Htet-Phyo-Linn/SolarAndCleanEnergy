@@ -4,10 +4,12 @@
     <?php
         use core\App;
 
-        if (isset($_SESSION["user_id"]) == 1) {
-            redirect("admin");
-        } else {
-            redirect("home");
+        if (isset($_SESSION["user_id"])) {
+            if (isset($_SESSION["user_id"]) == 1) {
+                redirect("admin");
+            } else {
+                redirect("home");
+            }
         }
 
         if (App::get("status")!=null) { 

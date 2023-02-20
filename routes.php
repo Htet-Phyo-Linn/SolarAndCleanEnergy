@@ -1,6 +1,6 @@
 <?php
 
-    // $router->register ([
+    // $router->signup ([
     //     ""=>"controllers/indexController.php",
     //     "about"=>"controllers/aboutController.php",
     //     "contact"=>"controllers/contactController.php",

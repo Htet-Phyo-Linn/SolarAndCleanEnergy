@@ -1,7 +1,7 @@
 <?php require_once "views/partials/heading.php"; ?>
 
 <?php
-    sessionCheck();
+    // sessionCheck();
 ?>
 
 <h1>home page</h1>

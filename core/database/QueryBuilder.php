@@ -25,13 +25,13 @@ use JetBrains\PhpStorm\Internal\ReturnTypeContract;
             $questionMark=rtrim($questionMark, ",");
 
             $sql = "insert into $table ($cols) values ($questionMark)";
+            // dd($sql);
             $statement=$this->pdo->prepare($sql);
             $get_Data_Values=array_values($dataArr);
             $statement->execute($get_Data_Values);
         }
         
-        public function loginCheck($dataArr, $table)
-        {
+        public function loginCheck($dataArr, $table) {
             $get_Data_Keys = array_keys($dataArr);
             $get_Data_Values = array_values($dataArr);
             $col1 = $get_Data_Keys[0];
@@ -49,6 +49,10 @@ use JetBrains\PhpStorm\Internal\ReturnTypeContract;
             $userInfo["uInfo"] = $statement->fetchAll(PDO::FETCH_ASSOC);
             
             return $userInfo;            
+        }
+
+        public function checkData() {
+        
         }
     }
 ?>

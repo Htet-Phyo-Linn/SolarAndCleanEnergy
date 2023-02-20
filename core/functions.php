@@ -16,15 +16,20 @@
     }
 
     function request($name) {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
             return ($_POST["$name"]);
         }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
             return ($_GET["$name"]);
         }
     }
     
+    function passwordValidation($input) {
+        $password_regex = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"; 
+        return preg_match($password_regex, $input);
+    }
+
     function checkInput($input) {
         $input = strip_tags($input);
         $input = str_replace("'", "''", $input);

@@ -10,7 +10,7 @@ create database SolarAndCleanEnergy;
 use SolarAndCleanEnergy;
 
 create table users(
-    uid varchar(10) not null,
+    uid int not null AUTO_INCREMENT,
 	userName varchar(255),
 	password varchar(255),
 	email varchar(255),
@@ -20,17 +20,33 @@ create table users(
 );
 desc users;
 
-create table images(
-	iid int not null,
+
+
+create table carInfo(
+	cid varchar(255) not null,
+	carName varchar(255),
+	content varchar(255),
+	price varchar(255),
 	fileName varchar(255),
-	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	primary key(iid)
+	primary key(cid)
 );
 desc images;
+
+create table carDetails(
+	cdid varchar(255) not null,
+	range varchar(255),
+	acceleration varchar(255),
+	tSpeed varchar(255),
+	motor varchar(255),
+	primary key(cdid),
+	foreign key 
+);
+desc carDetails;
 
 
 
 insert into users values (1, "admin", "admin", "admin@gmail.com", "09795994587", 1);
+
 
 insert into tasks (description,complete) values ("finish homework", false);
 insert into tasks  (description,complete) values ("clean", true);
