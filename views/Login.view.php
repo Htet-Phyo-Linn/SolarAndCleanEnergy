@@ -8,6 +8,9 @@
         <p> name or password wrong. </p>
     <?php
         App::bind("status", "success");
+        if(App::bind("status", "success") {
+            
+        }
         }
     ?>
 
