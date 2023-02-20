@@ -14,6 +14,9 @@
 
         public function home() {
             $users = App::get("database")->selectAll("users");
+            view('Home', [
+                "users"=>$users
+            ]);
         }
 
         public function about() {
@@ -68,5 +71,6 @@
                 view("Login");
             }
         }
+       
     }
 ?>

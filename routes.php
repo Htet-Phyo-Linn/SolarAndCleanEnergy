@@ -17,6 +17,7 @@
     $router->get('', [PagesController::class, "index"]);
     $router->get('about', [PagesController::class, "about"]);
     $router->get('login', [PagesController::class, "login"]);
+    $router->get('home', [PagesController::class, "home"]);
     $router->post('login', [PagesController::class, "login"]);
 ?>
 
