@@ -1,12 +1,6 @@
 <?php
 use core\App;
 session_start();
-
-//  dd($_SESSION["user_id"]);
-// if (!isset($_SESSION["user_id"])) {
-//     redirect("login");
-//     exit();
-// }
 sessionCheck();
 
 ?>

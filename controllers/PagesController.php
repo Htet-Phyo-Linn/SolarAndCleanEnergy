@@ -17,6 +17,10 @@
             view("Home", [
                 "users"=>$users
             ]);
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                sessionDestory();
+            }
         }
 
         public function about() {
@@ -31,6 +35,51 @@
             view("Contact");
         }
         
+        public function detail() {
+            
+        }
+
+        public function model() {
+            
+        }
+
+        public function profile() {
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                session_start();
+                // dd(($_SESSION["user_id"]));
+
+                $userDetail = App::get("database")->update([
+                        "userName"=>checkInput(request("userName")),
+                        "email"=>checkInput(request("email")),
+                        "phNo"=>checkInput(request("phNo"))
+                    ], "users", $_SESSION["user_id"]);
+
+                view("Profile", [
+                    "userDetail"=>$userDetail
+                ]);
+            } else {
+
+            session_start();
+            
+            
+            $userDetail = App::get("database")->where([
+                "uid" => $_SESSION["user_id"]
+            ], "users");
+
+            // dd($userDetail);
+            view("Profile", [
+                "userDetail"=>$userDetail
+            ]);
+            }
+        }
+
+        public function edit() {
+            session_start();
+            // dd($_SESSION("user_id"));
+            view("Edit");
+        }
+
         public function signup() {
             session_start();
 
@@ -53,7 +102,7 @@
                         "phNo"=>checkInput(request("phNo")),
                         "userRole"=>2,
                     ], "users");
-                    redirect("home");
+                    redirect("signin");
                 } else {
                     view("Signup");
                 }
@@ -79,15 +128,17 @@
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-                $userInfo = App::get("database")->loginCheck([
-                    "userName"=> $userName = checkInput(request("userName")),
+                $userInfo = App::get("database")->where([
+                    "email"=> checkInput(request("email")),
                     "password"=> checkInput(request("password"))
                 ], "users");
 
                 if($userInfo["rowCount"] == 1) {
-    
+                    
+                    $_SESSION["user_role"] = $userInfo["uInfo"][0]["userRole"];
                     $_SESSION["user_id"] = $userInfo["uInfo"][0]["uid"];
-
+                    App::bind("user_id",$userInfo["uInfo"][0]["uid"]);
+                    // dd($_SESSION["user_id"]);
                     if($userInfo["uInfo"][0]["userRole"] == 1) {
                         redirect("admin");
                         exit();

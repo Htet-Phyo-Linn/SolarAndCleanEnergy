@@ -2,8 +2,8 @@
     <?php
         use core\App;
 
-        if (isset($_SESSION["user_id"])) {
-            if (isset($_SESSION["user_id"]) == 1) {
+        if (isset($_SESSION["user_role"])) {
+            if ($_SESSION["user_role"] == 1) {
                 redirect("admin");
             } else {
                 redirect("home");
